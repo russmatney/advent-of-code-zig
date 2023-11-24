@@ -1,1 +1,8 @@
 #+title: Advent of Code - Zig
+
+* resources
+- zig website: https://ziglang.org
+- intro docs: https://ziglang.org/learn/overview/
+
+* 2015
+** Day 1: Not Quite Lisp
