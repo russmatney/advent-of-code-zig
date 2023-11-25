@@ -5,3 +5,7 @@ tmp/
 
 *.o
 build/
+inputs/
+
+zig-cache/
+zig-out/
