@@ -3,6 +3,16 @@
 * resources
 - zig website: https://ziglang.org
 - intro docs: https://ziglang.org/learn/overview/
+- zig learn: https://ziglearn.org/
+- zig std lib docs: https://ziglang.org/documentation/master/std/#A;std
+- zig strings in 5 min: https://www.huy.rocks/everyday/01-04-2022-zig-strings-in-5-minutes
+- zig http client usage: https://zig.news/nameless/coming-soon-to-a-zig-near-you-http-client-5b81
+
+
+You can view different versions of the std lib:
+- 0.11.0 std lib docs: https://ziglang.org/documentation/0.11.0/std
 
 * 2015
-** Day 1: Not Quite Lisp
+** [[file:src/2015/day01_not_quite_lisp.zig][Day 1]]: Not Quite Lisp
+** [[file:src/2015/day02_i_was_told_no_math.zig][Day 2]]: I was told there would be no math
+** [[file:src/2015/day03_spherical_houses.zig][Day 3]]: Perfectly Spherical Houses in a Vacuum
