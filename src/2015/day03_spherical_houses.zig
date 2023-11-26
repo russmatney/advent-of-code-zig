@@ -6,11 +6,11 @@ const allocator = std.heap.page_allocator;
 
 const sesh = @embedFile("session.txt");
 
-pub fn main() !void {
+const input_file = "day03_input.txt";
+
+fn fetch_input() !void {
     var splits = std.mem.split(u8, sesh, "\n");
     var session = splits.first();
-
-    pr("[Day 3]", .{});
 
     var client = http.Client{
         .allocator = allocator,
@@ -40,6 +40,21 @@ pub fn main() !void {
     try file.writeAll(body);
 
     pr("input data written to file {s}", .{input_filename});
+}
 
+pub fn main() !void {
+    pr("[Day 3]", .{});
+
+    fs.cwd().access(input_file, .{}) catch |err| switch (err) {
+        error.FileNotFound => {
+            pr("Input file not found, fetching...", .{});
+            try fetch_input();
+            return err;
+        },
+        else => return err
+    };
+    pr("Input file found, continuing...", .{});
+    var data = @embedFile(input_file);
+    _ = data;
 
 }
