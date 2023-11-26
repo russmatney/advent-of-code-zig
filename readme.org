@@ -12,6 +12,10 @@
 You can view different versions of the std lib:
 - 0.11.0 std lib docs: https://ziglang.org/documentation/0.11.0/std
 
+zig for advent of code: https://www.huy.rocks/everyday/12-11-2022-zig-using-zig-for-advent-of-code
+
+more learning/getting started: https://www.openmymind.net/learning_zig/coding_in_zig/
+
 * 2015
 ** [[file:src/2015/day01_not_quite_lisp.zig][Day 1]]: Not Quite Lisp
 ** [[file:src/2015/day02_i_was_told_no_math.zig][Day 2]]: I was told there would be no math
