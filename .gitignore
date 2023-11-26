@@ -6,6 +6,7 @@ tmp/
 *.o
 build/
 inputs/
+*_input.txt
 
 zig-cache/
 zig-out/
