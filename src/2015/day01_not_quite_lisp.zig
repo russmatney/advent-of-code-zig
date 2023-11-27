@@ -2,6 +2,7 @@ const std = @import("std");
 const fs = std.fs;
 const mem = std.mem;
 const expectEqual = std.testing.expectEqual;
+const allocator = std.heap.page_allocator;
 
 fn solve(input: []const u8) i32 {
     var floor: i32 = 0;
@@ -62,12 +63,6 @@ pub fn main() !void {
 
     var file = try fs.cwd().openFile("../../inputs/2015/day01.txt", .{});
     defer file.close();
-
-    // https://stackoverflow.com/questions/68368122/how-to-read-a-file-in-zig/77053872#77053872
-    // Get an allocator
-    var gp = std.heap.GeneralPurposeAllocator(.{ .safety = true }){};
-    defer _ = gp.deinit();
-    const allocator = gp.allocator();
 
     var contents = try file.readToEndAlloc(allocator, 10000);
     defer allocator.free(contents);
