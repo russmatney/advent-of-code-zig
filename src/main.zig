@@ -1,11 +1,16 @@
 const std = @import("std");
 const aoc = @import("aoc");
 
+const re = @cImport(@cInclude("regez.h"));
+const REGEX_T_ALIGNOF = re.sizeof_regex_t;
+const REGEX_T_SIZEOF = re.alignof_regex_t;
+
 pub fn main() !void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
     std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
 
     aoc.bleh();
+    std.debug.print("regex: {any}", .{re});
 
     // stdout is for the actual output of your application, for example if you
     // are implementing gzip, then only the compressed bytes should be sent to

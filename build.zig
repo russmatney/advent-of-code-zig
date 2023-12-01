@@ -9,6 +9,7 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+
     // exec ///////////////////////////////////////////////
     const exe = b.addExecutable(.{
         .name = "advent-of-code-zig",
@@ -19,8 +20,12 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    exe.addIncludePath(.{.path = "lib/regez"});
+
     // modules ///////////////////////////////////////////////
-    var aoc = b.addModule("aoc", .{.source_file = .{.path="src/2015/aoc.zig"}});
+    var aoc = b.addModule("aoc", .{
+        .source_file = .{.path="src/2015/aoc.zig"}
+    });
     exe.addModule("aoc", aoc);
 
     b.installArtifact(exe);
@@ -32,6 +37,7 @@ pub fn build(b: *std.Build) void {
         run_cmd.addArgs(args);
     }
     const run_step = b.step("run", "Run the app");
+
     run_step.dependOn(&run_cmd.step);
 
     // tests /////////////////////////////////////////////

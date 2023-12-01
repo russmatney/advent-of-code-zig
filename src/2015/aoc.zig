@@ -7,7 +7,7 @@ const allocator = std.heap.page_allocator;
 const sesh = @embedFile("session.txt");
 
 pub fn bleh() void {
-    pr("bleh!", .{});
+    pr("bleh!\n", .{});
 }
 
 pub fn fetch_input(filename: []u8) !void {
