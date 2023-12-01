@@ -20,3 +20,8 @@ more learning/getting started: https://www.openmymind.net/learning_zig/coding_in
 ** [[file:src/2015/day01_not_quite_lisp.zig][Day 1]]: Not Quite Lisp
 ** [[file:src/2015/day02_i_was_told_no_math.zig][Day 2]]: I was told there would be no math
 ** [[file:src/2015/day03_spherical_houses.zig][Day 3]]: Perfectly Spherical Houses in a Vacuum
+
+* Other AOCs
+- [[https://github.com/russmatney/advent-of-code][advent-of-code (clojure)]]
+- [[https://github.com/russmatney/advent-of-godot][advent-of-godot]]
+- [[https://github.com/russmatney/advent-of-code-gerbil][advent-of-code-gerbil]]
