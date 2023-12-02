@@ -1,9 +1,10 @@
 const std = @import("std");
+const aoc = @import("./aoc.zig");
+
 const fs = std.fs;
 const mem = std.mem;
 const parseInt = std.fmt.parseInt;
 const expectEqual = std.testing.expectEqual;
-const data = @embedFile("day02_input.txt");
 
 fn line_to_area_and_ribbon(line: []const u8) ![2]u32 {
     var it = mem.tokenizeAny(u8, line, "x");
@@ -48,6 +49,8 @@ test "area per package" {
 }
 
 pub fn main() !void {
+    var data = try aoc.input_data("2015", "2");
+
     var splits = mem.split(u8, data, "\n");
 
     var total_area: u32 = 0;

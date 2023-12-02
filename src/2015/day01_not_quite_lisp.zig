@@ -1,4 +1,5 @@
 const std = @import("std");
+const aoc = @import("aoc.zig");
 const fs = std.fs;
 const mem = std.mem;
 const expectEqual = std.testing.expectEqual;
@@ -61,12 +62,8 @@ test "part 2 cases" {
 pub fn main() !void {
     std.debug.print("Hello, code!\n", .{});
 
-    var file = try fs.cwd().openFile("../../inputs/2015/day01.txt", .{});
-    defer file.close();
+    var data = try aoc.input_data("2015", "1");
 
-    var contents = try file.readToEndAlloc(allocator, 10000);
-    defer allocator.free(contents);
-
-    std.debug.print("final floor: {}\n", .{solve(contents)});
-    std.debug.print("first -1 floor at position: {}\n", .{solve_2(contents)});
+    std.debug.print("final floor: {}\n", .{solve(data)});
+    std.debug.print("first -1 floor at position: {}\n", .{solve_2(data)});
 }

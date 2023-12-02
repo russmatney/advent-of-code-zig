@@ -6,6 +6,8 @@ const allocator = std.heap.page_allocator;
 
 const sesh = @embedFile("session.txt");
 
+const max_bytes = 32568;
+
 pub fn fetch_input(filename: []const u8, year: []const u8, day: []const u8) ![]const u8 {
     var splits = std.mem.split(u8, sesh, "\n");
     var session = splits.first();
@@ -31,7 +33,7 @@ pub fn fetch_input(filename: []const u8, year: []const u8, day: []const u8) ![]c
     try req.wait();
 
     // TODO how to read all bytes here?
-    const body = req.reader().readAllAlloc(allocator, 8192) catch |err| {
+    const body = req.reader().readAllAlloc(allocator, max_bytes) catch |err| {
         pr("error reading request body {any}\n", .{err});
         switch (err) {
             else => return err
@@ -60,7 +62,6 @@ pub fn input_data(year: []const u8, day: []const u8) ![]const u8 {
     defer file.close();
     pr("Input file found, continuing...\n", .{});
 
-    const max_bytes = 8192;
     var data = file.readToEndAlloc(allocator, max_bytes) catch |err| {
         switch (err) {
             error.FileTooBig => {

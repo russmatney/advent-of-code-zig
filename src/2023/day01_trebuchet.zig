@@ -1,4 +1,6 @@
 const std = @import("std");
+const aoc = @import("aoc.zig");
+
 const mem = std.mem;
 const StringHashMap = std.StringHashMap;
 const allocator = std.heap.page_allocator;
@@ -6,8 +8,6 @@ const allocator = std.heap.page_allocator;
 const expectEqual = std.testing.expectEqual;
 const pr = std.debug.print;
 const parseInt = std.fmt.parseInt;
-
-const input = @embedFile("day01_input.txt");
 
 fn build_digits() !StringHashMap(u32) {
     var digits = StringHashMap(u32).init(allocator);
@@ -69,9 +69,6 @@ fn line_to_numbers(digits: StringHashMap(u32), line: []const u8) !u32 {
         last_digit = first_digit;
     }
 
-    pr("{d}", .{first_digit});
-    pr("{d}\n", .{last_digit});
-
     var str_num = try std.fmt.allocPrint(allocator, "{d}{d}", .{first_digit, last_digit});
     var num = try parseInt(u32, str_num, 10);
 
@@ -106,6 +103,8 @@ pub fn main() !void {
     pr("main running\n", .{});
     var digits = try build_digits();
     defer digits.deinit();
+
+    var input = try aoc.input_data("2023", "1");
 
     var lines = mem.split(u8, input, "\n");
 

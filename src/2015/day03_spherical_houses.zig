@@ -1,4 +1,5 @@
 const std = @import("std");
+const aoc = @import("./aoc.zig");
 const AutoHashMap = std.AutoHashMap;
 const mem = std.mem;
 const pr = std.debug.print;
@@ -7,83 +8,16 @@ const http = std.http;
 const expectEqual = std.testing.expectEqual;
 const allocator = std.heap.page_allocator;
 
-const input_file = "day03_input.txt";
-
-fn fetch_input(filename: []const u8) !void {
-    var splits = std.mem.split(u8, @embedFile("session.txt"), "\n");
-    var session = splits.first();
-
-    var client = http.Client{
-        .allocator = allocator,
-    };
-
-    const uri = try std.Uri.parse("https://adventofcode.com/2015/day/3/input");
-    var headers = http.Headers{
-        .allocator = allocator,
-        .owned = false
-    };
-    try headers.append("accept", "*/*");
-    var cookie_str = try std.fmt.allocPrint(allocator, "session={s}", .{session});
-    try headers.append("cookie", cookie_str);
-
-    var req = try client.request(.GET, uri, headers, .{});
-    defer req.deinit();
-
-    try req.start();
-    try req.wait();
-
-    const max_bytes = 8192;
-    const body = req.reader().readAllAlloc(allocator, max_bytes) catch |err| {
-        switch (err) {
-            // error.FileTooBig => {
-            //     pr("Question input bigger than expected! Max Bytes read from request - bump this allocator a bit!", .{});
-            //     return err;
-            // },
-            else => {
-                pr("Some error from AOC input request", .{});
-                return err;
-            }
-        }
-    };
-
-    defer allocator.free(body);
-
-    var file = try fs.cwd().createFile(filename, .{});
-    defer file.close();
-    try file.writeAll(body);
-
-    pr("input data written to file {s}", .{filename});
-}
-
 pub fn main() !void {
     pr("[Day 3]", .{});
 
-    var file = fs.cwd().openFile(input_file, .{}) catch |err| switch (err) {
-        error.FileNotFound => {
-            pr("Input file not found, fetching...\n", .{});
-            try fetch_input(input_file);
-            return err;
-        },
-        else => return err
-    };
-    defer file.close();
-    pr("Input file found, continuing...\n", .{});
-
-    const max_bytes = 8192;
-    var data = file.readToEndAlloc(allocator, max_bytes) catch |err| {
-        switch (err) {
-            error.FileTooBig => {
-                pr("Max Bytes read! Bump this allocator a bit!", .{});
-                return err;
-            },
-            else => return err
-        }
-    };
+    var data = try aoc.input_data("2015", "3");
     defer allocator.free(data);
+    // pr("data: {s}\n", .{data});
 
     var count = try count_houses(data);
     var count_2 = try count_houses2(data);
-    pr("houses: {}, {}", .{count, count_2});
+    pr("houses: {}, {}\n", .{count, count_2});
 }
 
 const Pos = struct {
