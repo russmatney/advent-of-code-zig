@@ -1,0 +1,12 @@
+{:tasks
+ {zig-build-run
+  (shell "zig build run")
+
+  test
+  (shell "zig build test")
+
+  zig-run
+  {:task
+   (let []
+     (apply shell "zig run " *command-line-args*))}
+  }}

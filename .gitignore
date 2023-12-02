@@ -11,3 +11,6 @@ inputs/
 
 zig-cache/
 zig-out/
+
+.lsp/
+.clj-kondo/.cache
