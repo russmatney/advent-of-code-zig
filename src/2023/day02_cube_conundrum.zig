@@ -1,11 +1,12 @@
 const std = @import("std");
 const aoc = @import("aoc.zig");
+const allocator = std.heap.page_allocator;
+const pr = std.debug.print;
 const expectEqual = std.testing.expectEqual;
+
 const split = std.mem.split;
 const tokenizeAny = std.mem.tokenizeAny;
-const allocator = std.heap.page_allocator;
 
-const pr = std.debug.print;
 
 const Game = struct {
     id: u32,
