@@ -215,7 +215,7 @@ test "collect_parts" {
 }
 
 pub fn main() !void {
-    pr("Day 3", .{});
+    pr("Day 3\n", .{});
 
     var data = try aoc.input_data("2023", "3");
     // var data = example_data;
@@ -224,13 +224,17 @@ pub fn main() !void {
     var parts = try collect_parts(grid);
 
     var sum_of_parts: u32 = 0;
+    var sum_of_gears: u32 = 0;
     for (parts) |p| {
         for (p.numbers) |num| {
             sum_of_parts += num;
         }
+
+        if (p.symbol != "*"[0]) continue;
+        if (p.numbers.len != 2) continue;
+        sum_of_gears += p.numbers[0] * p.numbers[1];
     }
 
-    pr("Sum of parts: {d}", .{sum_of_parts});
-
-
+    pr("Sum of parts: {d}\n", .{sum_of_parts});
+    pr("Sum of gears: {d}\n", .{sum_of_gears});
 }
