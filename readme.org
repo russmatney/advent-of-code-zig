@@ -16,13 +16,15 @@ zig for advent of code: https://www.huy.rocks/everyday/12-11-2022-zig-using-zig-
 
 more learning/getting started: https://www.openmymind.net/learning_zig/coding_in_zig/
 
+* 2023
+** [[file:src/2023/day01_trebuchet.zig][Day 1]]: Trebuchet
+** [[file:src/2023/day02_cube_conundrum.zig][Day 2]]: Cubes
+** [[file:src/2023/day03_part_numbers.zig][Day 3]]: Part Numbers
 * 2015
 ** [[file:src/2015/day01_not_quite_lisp.zig][Day 1]]: Not Quite Lisp
 ** [[file:src/2015/day02_i_was_told_no_math.zig][Day 2]]: I was told there would be no math
 ** [[file:src/2015/day03_spherical_houses.zig][Day 3]]: Perfectly Spherical Houses in a Vacuum
 
-* 2023
-** Day 1: Trebuchet
 * Other AOCs
 - [[https://github.com/russmatney/advent-of-code][advent-of-code (clojure)]]
 - [[https://github.com/russmatney/advent-of-godot][advent-of-godot]]
